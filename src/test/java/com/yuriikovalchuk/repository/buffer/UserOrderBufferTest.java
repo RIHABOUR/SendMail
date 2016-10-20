@@ -4,7 +4,6 @@ import com.yuriikovalchuk.util.TooManyOrdersException;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 import static com.yuriikovalchuk.TestData.*;
 
 public class UserOrderBufferTest {
@@ -31,4 +30,5 @@ public class UserOrderBufferTest {
             userOrderBuffer.add(TEST_ORDER_DTO);
         }
     }
+
 }

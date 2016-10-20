@@ -27,7 +27,7 @@ public class OrderServiceImpl implements OrderService {
     public void delete(@NonNull OrderDto order) {
         serviceOrderBuffer.delete(order);
 
-        /* Not required. Delete all out of date orders for current user from buffer. */
+        /* Not required. Delete all out of date orders for current user from buffer if it is full. */
         userOrderBuffer.deleteOutOfIntervalOrdersByUser(order.getUserEmail());
     }
 

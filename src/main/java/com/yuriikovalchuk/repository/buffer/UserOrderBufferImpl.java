@@ -55,7 +55,7 @@ public class UserOrderBufferImpl implements UserOrderBuffer {
 
         LinkedList<Long> orderTimes = orderTimesByUser.get(userEmail);
 
-        if (orderTimes != null) {
+        if (orderTimes != null && orderTimes.size() == maxOrderCountPerInterval) {
 
             synchronized (orderTimes) {
 

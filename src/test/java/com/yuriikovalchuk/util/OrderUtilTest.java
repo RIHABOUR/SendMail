@@ -31,4 +31,5 @@ public class OrderUtilTest {
         assertEquals(TEST_MAIL_MESSAGE.getSubject(), actual.getSubject());
         assertEquals(TEST_MAIL_MESSAGE.getText(), actual.getText());
     }
+
 }

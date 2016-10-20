@@ -11,4 +11,5 @@ public class SendMailApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SendMailApplication.class, args);
 	}
+
 }

@@ -45,8 +45,6 @@ public class OrderRestController {
     @RequestMapping(value = "/order", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> order(@NonNull @Valid @RequestBody Order order, Errors errors) {
 
-        System.out.println(order);
-
         try {
 
             /* If bean validation failed convert errors to readable form (has too many needless info by default). */
@@ -60,8 +58,6 @@ public class OrderRestController {
 
             /* Convert bean to dto. */
             OrderDto orderDto = orderUtil.orderToOrderDto(order, orderUtil.getTimeNowInMillis());
-
-            System.out.println(orderDto);
 
             /* User identification. */
             if (userService.getByEmail(orderDto.getUserEmail()) == null) {

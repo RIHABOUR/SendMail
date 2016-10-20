@@ -53,8 +53,6 @@ public class OrderRestControllerTest {
         given(this.userService.getByEmail(TEST_EMAIL)).willReturn(TEST_USER);
         given(this.orderUtil.orderToSimpleMailMessage(TEST_ORDER)).willReturn(TEST_MAIL_MESSAGE);
 
-        System.out.println(TEST_ORDER);
-
         this.mvc.perform(post("/order").contentType(MediaType.APPLICATION_JSON).content(TestData.TEST_JSON))
                 .andExpect(status().isOk()).andExpect(content().string("The email has been sent!"));
     }

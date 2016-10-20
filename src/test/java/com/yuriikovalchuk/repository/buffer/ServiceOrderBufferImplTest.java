@@ -37,6 +37,6 @@ public class ServiceOrderBufferImplTest {
         Thread.sleep(1000);
 
         assertEquals(Thread.State.TERMINATED, thread.getState());
-
     }
+
 }
