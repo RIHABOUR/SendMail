@@ -7,7 +7,7 @@ Send Mail
 ###REST-сервис, принимающий и выполняющий заказы на рассылку email’ов.
 ===============================
 ##Использованные технологии:
-#SpringBoot, SpringMail, Javax Mail, JUnit, Mockhito, Hibernate Validator, Jirutka Validator, Lombok, Maven, Travis-CI
+#SpringBoot, SpringMail, Javax Mail, JUnit, Mockhito, Hibernate Validator, Jirutka, Lombok, Maven, Travis-CI
 ===============================
 ##Краткое обоснование данного решения поставленной задачи:
 
