@@ -1,10 +1,7 @@
 package com.yuriikovalchuk.util;
 
-
 import com.yuriikovalchuk.domain.Order;
-import com.yuriikovalchuk.dto.OrderDto;
 import lombok.NonNull;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -12,39 +9,19 @@ import java.util.Date;
 @Component
 public class OrderUtil {
 
-    public OrderDto orderToOrderDto(@NonNull Order order, long orderTimeInMillis) {
+    public int calculateSize(@NonNull Order order) {
 
-        String userEmail = order.getFrom();
+        int toSize = order.getTo().size();
 
-        int ccLength = order.getCc() == null ? 0 : order.getCc().size();
-        int bccLength = order.getBcc() == null ? 0 : order.getBcc().size();
+        int ccSize = order.getCc() == null ? 0 : order.getCc().size();
 
-        int size = order.getContent().getValue().length() * (order.getTo().size() + ccLength + bccLength);
+        int bccSize = order.getBcc() == null ? 0 : order.getBcc().size();
 
-        return new OrderDto(userEmail, orderTimeInMillis, size);
+        return order.getContent().getValue().length() * (toSize + ccSize + bccSize);
+
     }
 
-    public SimpleMailMessage orderToSimpleMailMessage(@NonNull Order order) {
-
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setFrom(order.getFrom());
-        message.setReplyTo(order.getReplyTo());
-        message.setTo(order.getTo().toArray(new String[order.getTo().size()]));
-
-        int ccLength = order.getCc() == null ? 0 : order.getCc().size();
-        message.setCc(ccLength == 0 ? new String[0] : order.getCc().toArray(new String[ccLength]));
-
-        int bccLength = order.getBcc() == null ? 0 : order.getBcc().size();
-        message.setBcc(bccLength == 0 ? new String[0] : order.getBcc().toArray(new String[bccLength]));
-
-        message.setSubject(order.getSubject());
-        message.setText(order.getContent().getValue());
-
-        return message;
-    }
-
-    public long getTimeNowInMillis() {
+    public long getCurrentTime() {
         return new Date().getTime();
     }
 

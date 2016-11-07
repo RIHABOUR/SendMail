@@ -2,16 +2,16 @@ package com.yuriikovalchuk.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cz.jirutka.validator.collection.constraints.EachEmail;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Order {
 
@@ -23,7 +23,7 @@ public class Order {
     @JsonProperty("reply_to")
     private String replyTo;
 
-    @NotNull
+    @NotEmpty
     @EachEmail
     private List<String> to;
 
@@ -33,10 +33,19 @@ public class Order {
     @EachEmail
     private List<String> bcc;
 
-    @NotNull
+    @NotEmpty
     private String subject;
 
     @NotNull
+    @Valid
     private Content content;
+
+    private int id;
+
+    private User user;
+
+    private long timeInMillis;
+
+    private int size;
 
 }

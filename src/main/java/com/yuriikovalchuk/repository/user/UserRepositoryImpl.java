@@ -1,4 +1,4 @@
-package com.yuriikovalchuk.repository;
+package com.yuriikovalchuk.repository.user;
 
 import com.yuriikovalchuk.domain.User;
 import lombok.NonNull;
@@ -12,10 +12,6 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> repository = new ConcurrentHashMap<>();
 
-    {
-        add(new User("jurofreddy@gmail.com"));
-    }
-
     @Override
     public User add(@NonNull User user) {
         return repository.put(user.getEmail(), user);
@@ -24,11 +20,6 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User getByEmail(@NonNull String email) {
         return repository.get(email);
-    }
-
-    @Override
-    public boolean deleteByMail(@NonNull String email) {
-        return repository.remove(email) != null;
     }
 
 }
